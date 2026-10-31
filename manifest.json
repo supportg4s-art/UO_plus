@@ -1,20 +1,20 @@
 {
   "name": "UO+",
-  "version": 63,
+  "version": 64,
   "released": "2026-10-31",
-  "notes": "Лаунчер UOPlus_Play.exe с обновлениями. Сетка до 16×16 для больших сундуков; радар на доп-карте; targetnext; teleport на стену; выбор, чьи клавиши брать",
+  "notes": "Учебный журнал для обучения ботов: uoplus_journal\\ГГГГ-ММ-ДД.jsonl — действия игрока и обстановка (без входа и чата). Выключить: [journal] enabled=0 в uoplus.ini",
   "files": [
     {
       "path": "UOPlus.dll",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
-      "size": 1961812,
-      "sha256": "fb28666d6c238c9cf56a91920dac1a028fe2503d0b0404d20b306cf94d390c48"
+      "size": 2003926,
+      "sha256": "12e804108feca53dca2a58b8425ed5fd0bd0740a26395090dcc762070d80271e"
     },
     {
       "path": "zlib1.dll",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
-      "size": 1961812,
-      "sha256": "fb28666d6c238c9cf56a91920dac1a028fe2503d0b0404d20b306cf94d390c48",
+      "size": 2003926,
+      "sha256": "12e804108feca53dca2a58b8425ed5fd0bd0740a26395090dcc762070d80271e",
       "only_if_ours": true
     },
     {
