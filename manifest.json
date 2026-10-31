@@ -1,38 +1,33 @@
 {
   "name": "UO+",
-  "version": 62,
+  "version": 63,
   "released": "2026-10-31",
-  "notes": "Сетка до 16×16 (256 клеток) для больших сундуков; радар на доп-карте с памятью 30 с; targetnext; teleport на стену; выбор, чьи клавиши брать; лут F12 после разделки; имена умений как в клиенте AoP",
+  "notes": "Лаунчер UOPlus_Play.exe с обновлениями. Сетка до 16×16 для больших сундуков; радар на доп-карте; targetnext; teleport на стену; выбор, чьи клавиши брать",
   "files": [
     {
-      "path": "UltimaOnline(AOP)/zlib1.dll",
-      "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UltimaOnline%28AOP%29/zlib1.dll",
+      "path": "UOPlus.dll",
+      "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
       "size": 1961812,
       "sha256": "fb28666d6c238c9cf56a91920dac1a028fe2503d0b0404d20b306cf94d390c48"
     },
     {
-      "path": "UltimaOnline(AOP)/UOPlus.dll",
-      "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UltimaOnline%28AOP%29/zlib1.dll",
+      "path": "zlib1.dll",
+      "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
       "size": 1961812,
-      "sha256": "fb28666d6c238c9cf56a91920dac1a028fe2503d0b0404d20b306cf94d390c48"
+      "sha256": "fb28666d6c238c9cf56a91920dac1a028fe2503d0b0404d20b306cf94d390c48",
+      "only_if_ours": true
     },
     {
-      "path": "UOPlus/verdata_uoplus.mul",
-      "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus/verdata_uoplus.mul",
+      "path": "verdata.mul",
+      "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/verdata.mul",
       "size": 24312712,
       "sha256": "fd7c8749bf257f63918403c18425b0fdb07fbea5ca6ad62b016d859577d1fe15"
     },
     {
-      "path": "UOPlus/tools/uoplus_grid_gen.py",
-      "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/tools/uoplus_grid_gen.py",
-      "size": 4449,
-      "sha256": "27898190eb7df1e7bbc902f79daec6fe6dfa97361e3cd3077d764dc4e953fd3a"
-    },
-    {
-      "path": "UOPlus/tools/verdata_gumps.py",
-      "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/tools/verdata_gumps.py",
-      "size": 5319,
-      "sha256": "25d6985fff20ab7bf3e0231e3d9c1f245c63b18ab7ea10f22b6962ca79a7671c"
+      "path": "UOPlus_Play.exe",
+      "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus_Play.exe",
+      "size": 1128860,
+      "sha256": "55017a959d0b96bb4453af5b4cf88e8b37a9d0e84ec7da9190eb26d14b83fae6"
     }
   ]
 }
