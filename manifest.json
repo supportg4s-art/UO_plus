@@ -1,20 +1,20 @@
 {
   "name": "UO+",
-  "version": 66,
+  "version": 67,
   "released": "2026-11-01",
-  "notes": "Цель (targetnext и прицел): имя и HP в углу, метка над целью. Стелс: сколько шагов осталось. Включено сразу; выключить — Настройки UOPlus → «Полоски и помощники». Исправлено: targetnext не видел стоящих мобов после входа",
+  "notes": "Цель прицелом (settarget) и атакой; setobject — запомнить оружие курсором, lastobject — двойной клик по нему (разделка трупов). Всё есть в окне «Горячие клавиши»",
   "files": [
     {
       "path": "UOPlus.dll",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
-      "size": 2061539,
-      "sha256": "222b276100c5ff26951a5be91ebd73ef88fe3b3e5f60c3c5a0a8b06788af5972"
+      "size": 2066249,
+      "sha256": "184c0eb88074f731cc6f77b9f29b97f5407f0545b81dd1b3b4d330c5acb39a62"
     },
     {
       "path": "zlib1.dll",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
-      "size": 2061539,
-      "sha256": "222b276100c5ff26951a5be91ebd73ef88fe3b3e5f60c3c5a0a8b06788af5972",
+      "size": 2066249,
+      "sha256": "184c0eb88074f731cc6f77b9f29b97f5407f0545b81dd1b3b4d330c5acb39a62",
       "only_if_ours": true
     },
     {
