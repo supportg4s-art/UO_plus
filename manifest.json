@@ -1,20 +1,20 @@
 {
   "name": "UO+",
-  "version": 64,
-  "released": "2026-10-31",
-  "notes": "Учебный журнал для обучения ботов: uoplus_journal\\ГГГГ-ММ-ДД.jsonl — действия игрока и обстановка (без входа и чата). Выключить: [journal] enabled=0 в uoplus.ini",
+  "version": 65,
+  "released": "2026-11-01",
+  "notes": "Полоски бинта, банки и каста (своего и чужого, с подписью над кастующим) и автооткрытие дверей — всё выключено, включается: Настройки UOPlus → «Полоски и помощники»",
   "files": [
     {
       "path": "UOPlus.dll",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
-      "size": 2003926,
-      "sha256": "12e804108feca53dca2a58b8425ed5fd0bd0740a26395090dcc762070d80271e"
+      "size": 2045443,
+      "sha256": "2eb11ab2ab73511557fb5199927a9fd1a1d6e485441b7ec6a472136e7725d471"
     },
     {
       "path": "zlib1.dll",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
-      "size": 2003926,
-      "sha256": "12e804108feca53dca2a58b8425ed5fd0bd0740a26395090dcc762070d80271e",
+      "size": 2045443,
+      "sha256": "2eb11ab2ab73511557fb5199927a9fd1a1d6e485441b7ec6a472136e7725d471",
       "only_if_ours": true
     },
     {
