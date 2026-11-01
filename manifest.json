@@ -1,20 +1,20 @@
 {
   "name": "UO+",
-  "version": 67,
-  "released": "2026-11-01",
-  "notes": "Цель прицелом (settarget) и атакой; setobject — запомнить оружие курсором, lastobject — двойной клик по нему (разделка трупов). Всё есть в окне «Горячие клавиши»",
+  "version": 68,
+  "released": "2026-11-02",
+  "notes": "Любой прицел на моба (grab, addobject и др.) делает его целью для attack lasttarget, как в Injection. setobject / lastobject — оружие для разделки",
   "files": [
     {
       "path": "UOPlus.dll",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
       "size": 2066249,
-      "sha256": "184c0eb88074f731cc6f77b9f29b97f5407f0545b81dd1b3b4d330c5acb39a62"
+      "sha256": "09e43fb622a0e34a9d3ed05cf1495effa7fb4b974488cff90fd4e26cc67f0e83"
     },
     {
       "path": "zlib1.dll",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
       "size": 2066249,
-      "sha256": "184c0eb88074f731cc6f77b9f29b97f5407f0545b81dd1b3b4d330c5acb39a62",
+      "sha256": "09e43fb622a0e34a9d3ed05cf1495effa7fb4b974488cff90fd4e26cc67f0e83",
       "only_if_ours": true
     },
     {
