@@ -1,20 +1,20 @@
 {
   "name": "UO+",
-  "version": 68,
+  "version": 69,
   "released": "2026-11-02",
-  "notes": "Любой прицел на моба (grab, addobject и др.) делает его целью для attack lasttarget, как в Injection. setobject / lastobject — оружие для разделки",
+  "notes": "Лут (F12): трупы и нож — не чаще раза в 2 с после любого своего действия (двойной клик, каст, бинт), предметы — как раньше; меньше «Подождите, предыдущее действие не завершено». Пауза — [loot] open_gap в uoplus.ini",
   "files": [
     {
       "path": "UOPlus.dll",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
-      "size": 2066249,
-      "sha256": "09e43fb622a0e34a9d3ed05cf1495effa7fb4b974488cff90fd4e26cc67f0e83"
+      "size": 2067469,
+      "sha256": "c07bbbe733355821546879fbe0bfcd71c51e6982b6a0ab8aabaa615dd9387aba"
     },
     {
       "path": "zlib1.dll",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
-      "size": 2066249,
-      "sha256": "09e43fb622a0e34a9d3ed05cf1495effa7fb4b974488cff90fd4e26cc67f0e83",
+      "size": 2067469,
+      "sha256": "c07bbbe733355821546879fbe0bfcd71c51e6982b6a0ab8aabaa615dd9387aba",
       "only_if_ours": true
     },
     {
