@@ -1,20 +1,20 @@
 {
   "name": "UO+",
-  "version": 69,
-  "released": "2026-11-02",
-  "notes": "Лут (F12): трупы и нож — не чаще раза в 2 с после любого своего действия (двойной клик, каст, бинт), предметы — как раньше; меньше «Подождите, предыдущее действие не завершено». Пауза — [loot] open_gap в uoplus.ini",
+  "version": 70,
+  "released": "2026-11-03",
+  "notes": "Лут как в Орионе: повтор открытия трупа через 5 с и не больше 3 раз, перенос предметов 240 мс; новая опция «Открывать трупы рядом на ходу» (выкл., Настройки UOPlus)",
   "files": [
     {
       "path": "UOPlus.dll",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
-      "size": 2067469,
-      "sha256": "c07bbbe733355821546879fbe0bfcd71c51e6982b6a0ab8aabaa615dd9387aba"
+      "size": 2070286,
+      "sha256": "a49221671ca7c1e0497a8606a549519418bab007f837c3f1a18d1f1783d2d404"
     },
     {
       "path": "zlib1.dll",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
-      "size": 2067469,
-      "sha256": "c07bbbe733355821546879fbe0bfcd71c51e6982b6a0ab8aabaa615dd9387aba",
+      "size": 2070286,
+      "sha256": "a49221671ca7c1e0497a8606a549519418bab007f837c3f1a18d1f1783d2d404",
       "only_if_ours": true
     },
     {
