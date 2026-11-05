@@ -1,0 +1,53 @@
+--- a/Core/RenderObjectsManager.cs
++++ b/Core/RenderObjectsManager.cs
+@@ -222,6 +222,9 @@
+ 
+             for (int i = 1; i < _objects.Length; i++)
+             {
++                if (i == (int) LAYER_ORDER.USERS)
++                    Radar.Render(g, x, y, w, h); // UO+ радар: под пользователями альянса
++
+                 if (i == (int) LAYER_ORDER.LABELS && !showlabel)
+                     continue;
+ 
+--- a/GUI/MainWindow.cs
++++ b/GUI/MainWindow.cs
+@@ -655,6 +655,7 @@
+             };
+ 
+             UOClientManager.Initialize(Handle);
++            Radar.Start(); // UO+ радар
+ 
+             Logger.Log("main window inizialized.");
+         }
+@@ -816,6 +817,8 @@
+ 
+                 if (_nextRefresh % 8L == 0L)
+                     _requestRefresh = true;
++                if (Radar.Tick())
++                    _requestRefresh = true;
+                 if (_nextRefresh % 1L == 0L && (UpdatePosition() || NetworkManager.SocketClient.ReceivedPackets))
+                     _requestRefresh = true;
+ 
+--- a/EnhancedMap.csproj
++++ b/EnhancedMap.csproj
+@@ -93,6 +93,7 @@
+     <Compile Include="Core\FilesManager.cs" />
+     <Compile Include="Core\HouseReader.cs" />
+     <Compile Include="Core\MapObjects\MaskObject.cs" />
++    <Compile Include="Core\Radar.cs" />
+     <Compile Include="Core\MapObjects\MobileObject.cs" />
+     <Compile Include="Core\MapObjects\SharedLabelObject.cs" />
+     <Compile Include="Core\MapsManager.cs" />
+--- a/Main.cs
++++ b/Main.cs
+@@ -166,7 +166,8 @@
+ 
+                 try
+                 {
+-                    Update.CheckUpdates();
++                    // UO+ радар: автообновление выключено, иначе оно заменит сборку с радаром обычной
++                    // Update.CheckUpdates();
+                 }
+                 catch
+                 {
