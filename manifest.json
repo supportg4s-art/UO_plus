@@ -1,8 +1,8 @@
 {
   "name": "UO+",
-  "version": 73,
+  "version": 74,
   "released": "2026-11-15",
-  "notes": "Новые гампы: окно статуса персонажа (0x802) и фон экрана входа (0x157C)",
+  "notes": "Новые кнопки в папердолле: Журнал, Навички, Статус",
   "files": [
     {
       "path": "UOPlus.dll",
@@ -20,8 +20,8 @@
     {
       "path": "verdata.mul",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/verdata.mul",
-      "size": 24669068,
-      "sha256": "bdcedd168f0433ae27d6f6e97fbcd66a53468f4aaf03918fa4bdbbd1e2daa2ee"
+      "size": 24657928,
+      "sha256": "8306355b5255a8c704830004e7f57cd87b04664031817204cc7869c4b5d46490"
     },
     {
       "path": "UOPlus_Play.exe",
