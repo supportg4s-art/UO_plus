@@ -1,8 +1,8 @@
 {
   "name": "UO+",
-  "version": 71,
+  "version": 72,
   "released": "2026-11-15",
-  "notes": "Новые гампы: рюкзак (0x3C), сундук (0x42), кольцо 0x589, арка 0x708, окно Cancel/Okay 0x816",
+  "notes": "Новые гампы: рюкзак (0x3C), сундук (0x42), папердолл (0x7D0, 0x7D1), статус персонажа (0x802)",
   "files": [
     {
       "path": "UOPlus.dll",
@@ -20,8 +20,8 @@
     {
       "path": "verdata.mul",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/verdata.mul",
-      "size": 24417188,
-      "sha256": "544ceee052f37ad3b735573a42aa2e09142df016bb43861dcd59f0d2de3d147b"
+      "size": 24548772,
+      "sha256": "78d85962b8007e0ffbfc362cce38952806047fb6f2e499a016c076391e5651ad"
     },
     {
       "path": "UOPlus_Play.exe",
