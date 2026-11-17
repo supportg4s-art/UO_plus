@@ -27,7 +27,9 @@ UO+ — дополнение к старому клиенту Ultima Online 3.0 
 
 `UOPlus_Play.exe` в папке клиента: проверяет обновления, докачивает изменённое (прошлые файлы — рядом с `.old`),
 кнопка «Играть» запускает клиент в размере окна из `uoplus.ini` (`[launch] size`). `UOPlus_Play.exe /play` — сразу играть
-без окна. Журнал — `uoplus_launcher.log`. Сборка: `i686-w64-mingw32-windres play.rc -O coff -o play_res.o` и
+без окна. Кнопка «Настройки» (или `UOPlus_Play.exe /settings`) — вкладки Видео / Игра / Интерфейс / Полоски / Лут: пишет `uoplus.ini` и `ddraw.ini`, включает/выключает cnc-ddraw (`ddraw.dll(.off)`), пеньки — `[launch] penki=0` подключает `verdata_nopenki.mul` через `[files] verdata.mul` (если там своя verdata — не трогает). Если папка игры в реестре (`ExePath`) без файлов игры — прописывает свою (просит права администратора). Журнал — `uoplus_launcher.log`.
+
+После каждой пересборки `files/verdata.mul` пересобрать и вариант без пеньков: `python tools/verdata_gumps.py drop files/verdata.mul files/penki/patchdata.mul files/verdata_nopenki.mul`. Сборка: `i686-w64-mingw32-windres play.rc -O coff -o play_res.o` и
 `i686-w64-mingw32-g++ -std=c++17 -O2 -municode -mwindows -static -o UOPlus_Play.exe play.cpp play_res.o -lwinhttp -lbcrypt -lcomctl32 -lshell32 -ladvapi32 -lgdi32 -luser32`.
 
 ## Новая версия

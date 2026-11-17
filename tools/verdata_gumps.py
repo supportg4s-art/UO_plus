@@ -4,6 +4,9 @@
   python verdata_gumps.py export patchdata.mul папка      — каждый гамп -> папка/0xXXXX.png (+ список index.txt)
   python verdata_gumps.py pack   patchdata.mul папка новый.mul — собрать новый файл: правленые PNG заменяют гампы,
                                                                  новые 0xXXXX.png добавляются, остальное как было
+  python verdata_gumps.py drop   verdata.mul патч.mul новый.mul — убрать из verdata записи, которые совпадают с патчем
+                                                                 (так из verdata UO+ делается вариант без пеньков: drop … penki/patchdata.mul; убираются
+                                                                 только арты (fileid 4), гампы остаются)
 Формат: int count, затем записи по 20 байт (fileid, block, pos, len, extra). Гампы — fileid 12, block = номер гампа,
 extra = (ширина << 16) | высота; данные — таблица строк (int на строку, смещение в dword) и пары (цвет, длина) по 2 байта.
 Цвет 0 — прозрачно; в PNG прозрачность — альфа.
@@ -105,7 +108,25 @@ def pack(src, folder, dst):
         for d in blobs: o.write(d)
     print('собрано: %s; изменено %d, добавлено %d, всего записей %d' % (dst, changed, added, len(out_e)))
 
+def drop(src, patch, dst, fileids=(4,)):
+    f, es = read_entries(src)
+    pf, pe = read_entries(patch)
+    pdata = {(e[0], e[1]): pf[e[2]:e[2] + e[3]] for e in pe if e[0] in fileids}
+    keep = [e for e in es if pdata.get((e[0], e[1])) != f[e[2]:e[2] + e[3]]]
+    pos = 4 + 20 * len(keep)
+    out_e, blobs = [], []
+    for e in keep:
+        d = f[e[2]:e[2] + e[3]]
+        out_e.append((e[0], e[1], pos, len(d), e[4])); blobs.append(d); pos += len(d)
+    with open(dst, 'wb') as o:
+        o.write(struct.pack('<i', len(out_e)))
+        for e in out_e: o.write(struct.pack('<5i', *e))
+        for d in blobs: o.write(d)
+    print(f'убрано {len(es) - len(keep)} записей из {len(es)} -> {dst}')
+
+
 if __name__ == '__main__':
     if len(sys.argv) >= 4 and sys.argv[1] == 'export': export(sys.argv[2], sys.argv[3])
     elif len(sys.argv) >= 5 and sys.argv[1] == 'pack': pack(sys.argv[2], sys.argv[3], sys.argv[4])
+    elif len(sys.argv) >= 5 and sys.argv[1] == 'drop': drop(sys.argv[2], sys.argv[3], sys.argv[4])
     else: print(__doc__)

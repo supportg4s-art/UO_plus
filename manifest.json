@@ -1,8 +1,8 @@
 {
   "name": "UO+",
-  "version": 76,
+  "version": 77,
   "released": "2026-11-17",
-  "notes": "Лаунчер сам прописывает папку игры в реестр, если там чужая папка (игра молча закрывалась при запуске)",
+  "notes": "В лаунчере кнопка «Настройки»: видео (размер окна, cnc-ddraw), игра (пеньки, плавная ходьба, свет, нежить), интерфейс, полоски, лут",
   "files": [
     {
       "path": "UOPlus.dll",
@@ -26,8 +26,15 @@
     {
       "path": "UOPlus_Play.exe",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus_Play.exe",
-      "size": 991123,
-      "sha256": "73a0d601e75b8441d0f00196370927d7ab374d49447d42a1899364e2e4d34e70"
+      "size": 1023593,
+      "sha256": "d8d9720c4e70d855c9967a6e38a4371277e3770592c08f3a86e72d058097969c"
+    },
+    {
+      "path": "verdata_nopenki.mul",
+      "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/verdata_nopenki.mul",
+      "size": 24561348,
+      "sha256": "11d9244449c188c2d8d3581a4f6945102eed5fcdda314e79d90ae1d2d3c26254",
+      "option": "nopenki"
     }
   ]
 }
