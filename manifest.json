@@ -1,8 +1,8 @@
 {
   "name": "UO+",
-  "version": 74,
-  "released": "2026-11-15",
-  "notes": "Новые кнопки в папердолле: Журнал, Навички, Статус",
+  "version": 75,
+  "released": "2026-11-17",
+  "notes": "Кнопки Журнал и Навички: подсветка при наведении и нажатии",
   "files": [
     {
       "path": "UOPlus.dll",
@@ -20,8 +20,8 @@
     {
       "path": "verdata.mul",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/verdata.mul",
-      "size": 24657928,
-      "sha256": "8306355b5255a8c704830004e7f57cd87b04664031817204cc7869c4b5d46490"
+      "size": 24659556,
+      "sha256": "3a308f91a8747bf60ee9f3f8d5e2140e8f1134f51f64ecf6036e5f91f3f57b54"
     },
     {
       "path": "UOPlus_Play.exe",
