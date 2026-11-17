@@ -282,7 +282,73 @@ static std::wstring pick_client() {   // как раньше в UOPlus_Play: р�
     }
     return exe;
 }
+// ---------------------------------------------------------------- реестр: где клиент ищет файлы игры
+// Клиент 3.0.0c берёт папку с *.mul/*.def не из своей папки, а из реестра (ExePath). Если там чужая папка без файлов,
+// он молча выходит с кодом 1 (2026-11-17, тестер на Маке: «ярлык не стартует»). Рабочую запись не трогаем —
+// у игрока может стоять ещё и обычный клиент AoP; переписываем, только если там файлов игры нет.
+static const wchar_t *UO_KEY = L"SOFTWARE\\Origin Worlds Online\\Ultima Online\\1.0";
+static bool has_game_files(const std::wstring &d) {
+    static const wchar_t *need[] = {L"anim1.def", L"anim2.def", L"anim3.def", L"anim4.def", L"art.def", L"body.def",
+                                    L"corpse.def", L"music.def", L"sound.def", L"art.mul", L"tiledata.mul"};
+    if (d.empty()) return false;
+    for (auto n : need) if (!exists(d + L"\\" + n)) return false;
+    return true;
+}
+static std::wstring reg_game_dir() {
+    HKEY k;
+    if (RegOpenKeyExW(HKEY_LOCAL_MACHINE, UO_KEY, 0, KEY_QUERY_VALUE | KEY_WOW64_32KEY, &k) != ERROR_SUCCESS) return L"";
+    wchar_t b[MAX_PATH * 2] = {};
+    DWORD sz = sizeof b - sizeof(wchar_t), type = 0;
+    LONG r = RegQueryValueExW(k, L"ExePath", nullptr, &type, (BYTE *)b, &sz);
+    RegCloseKey(k);
+    if (r != ERROR_SUCCESS || type != REG_SZ) return L"";
+    std::wstring s = b;
+    size_t i = s.find_last_of(L'\\');
+    return i == std::wstring::npos ? L"" : s.substr(0, i);
+}
+static bool write_reg() {
+    std::wstring exe = pick_client();
+    if (exe.empty()) return false;
+    std::wstring full = g_dir + L"\\" + exe, cd = g_dir + L"\\";
+    bool ok32 = false;
+    for (REGSAM view : {KEY_WOW64_32KEY, KEY_WOW64_64KEY}) {
+        HKEY k;
+        if (RegCreateKeyExW(HKEY_LOCAL_MACHINE, UO_KEY, 0, nullptr, 0, KEY_SET_VALUE | view, nullptr, &k, nullptr) != ERROR_SUCCESS)
+            continue;
+        auto put = [&](const wchar_t *n, const std::wstring &v) {
+            return RegSetValueExW(k, n, 0, REG_SZ, (const BYTE *)v.c_str(), (DWORD)((v.size() + 1) * 2)) == ERROR_SUCCESS;
+        };
+        bool ok = put(L"ExePath", full) && put(L"InstCDPath", cd) && put(L"StartExePath", full) && put(L"PatchExePath", full)
+                  && put(L"Upgraded", L"Yes");
+        RegCloseKey(k);
+        if (view == KEY_WOW64_32KEY) ok32 = ok;
+    }
+    return ok32;
+}
+static void fix_registry() {
+    std::wstring cur = reg_game_dir();
+    if (has_game_files(cur)) return;   // клиент найдёт свои файлы — не трогаем
+    if (!has_game_files(g_dir)) {
+        log(L"В реестре папка игры не та (" + (cur.empty() ? std::wstring(L"пусто") : cur) + L"), а в папке UO+ нет всех файлов игры — реестр не трогаю");
+        return;
+    }
+    log(L"Папка игры в реестре: " + (cur.empty() ? std::wstring(L"не записана") : cur) + L" — прописываю " + g_dir);
+    if (write_reg()) { log(L"Реестр: готово"); return; }
+    // в HKLM без прав администратора не записать — один раз спросить Windows (окно «Разрешить изменения?»)
+    log(L"Реестр: нужны права администратора — Windows спросит разрешение");
+    SHELLEXECUTEINFOW se = {sizeof se};
+    std::wstring me = self_path();
+    se.fMask = SEE_MASK_NOCLOSEPROCESS; se.hwnd = g_wnd; se.lpVerb = L"runas"; se.lpFile = me.c_str();
+    se.lpParameters = L"/fixreg"; se.lpDirectory = g_dir.c_str(); se.nShow = SW_HIDE;
+    if (ShellExecuteExW(&se) && se.hProcess) {
+        WaitForSingleObject(se.hProcess, 60000);
+        CloseHandle(se.hProcess);
+    }
+    log(has_game_files(reg_game_dir()) ? L"Реестр: готово" : L"Реестр: записать не удалось — игра может не запуститься");
+}
+
 static void play() {
+    fix_registry();
     std::wstring exe = pick_client();
     if (exe.empty() || !exists(g_dir + L"\\UOPlus.dll")) {
         MessageBoxW(g_wnd, L"UO+ не установлен в этой папке. Запустите установщик ещё раз.", TITLE, MB_ICONWARNING);
@@ -350,6 +416,7 @@ static LRESULT CALLBACK wndproc(HWND h, UINT msg, WPARAM wp, LPARAM lp) {
 int WINAPI wWinMain(HINSTANCE hi, HINSTANCE, PWSTR cmdline, int) {
     g_dir = dir_of_self();
     DeleteFileW((self_path() + L".old").c_str());   // прошлая версия лаунчера после самообновления
+    if (wcsstr(cmdline, L"/fixreg")) return write_reg() ? 0 : 1;   // вызов из fix_registry() с правами администратора
     if (wcsstr(cmdline, L"/play")) {   // ярлык «сразу играть» без окна (как старый UOPlus_Play)
         g_wnd = nullptr; play(); return 0;
     }
