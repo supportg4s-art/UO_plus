@@ -1,14 +1,14 @@
 {
   "name": "UO+",
-  "version": 78,
-  "released": "2026-11-17",
-  "notes": "Новые гампы: кнопка «Опції» с подсветкой, рюкзак на папердолле",
+  "version": 79,
+  "released": "2026-11-18",
+  "notes": "В окне клавиш новые готовые команды: питомцы (all come / guard / stop / kill), торговец (vendor sell / buy), банк",
   "files": [
     {
       "path": "UOPlus.dll",
       "url": "https://raw.githubusercontent.com/supportg4s-art/UO_plus/main/files/UOPlus.dll",
-      "size": 2070286,
-      "sha256": "a49221671ca7c1e0497a8606a549519418bab007f837c3f1a18d1f1783d2d404"
+      "size": 2100736,
+      "sha256": "683429e1e037a5464016f2b2b8a6e79e078d99a071f87651236b3ae7523fce5f"
     },
     {
       "path": "zlib1.dll",
